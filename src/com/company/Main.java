@@ -32,14 +32,13 @@ public class Main {
             piecesNum = a;
         } else {
             int nod = 1;
-            List<Integer> aDividers = getNaturalDividers(a);
-            List<Integer> bDividers = getNaturalDividers(b);
+            ArrayList<Integer> aDividers = getNaturalDividers(a);
+            ArrayList<Integer> bDividers = getNaturalDividers(b);
 
+            List<Integer> commonElements = leaveOnlyCommonElements(aDividers, bDividers);
 
-            aDividers.retainAll(bDividers);
-
-            if (aDividers.size() > 0) {
-                nod = aDividers.stream().reduce(1, (i1, i2) -> i1 * i2);
+            if (commonElements.size() > 0) {
+                nod = commonElements.stream().reduce(1, (i1, i2) -> i1 * i2);
             }
 
             piecesNum = (a * b) / nod;
@@ -64,5 +63,19 @@ public class Main {
         }
 
         return dividers;
+    }
+
+    private static List<Integer> leaveOnlyCommonElements(List<Integer> aDividers, List<Integer> bDividers) {
+        List<Integer> outputList = new ArrayList<>();
+
+        aDividers.stream().forEach((element) -> {
+            int index = bDividers.indexOf(element);
+            if (index != -1) {
+                outputList.add(element);
+                bDividers.remove(index);
+            }
+        });
+
+        return outputList;
     }
 }

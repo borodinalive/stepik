@@ -30,4 +30,16 @@ public class MainTest {
         assertEquals(144, Main.getPiecesNumber(36, 48));
     }
 
+    @Test()
+    @DisplayName("Pie test for 60 and 24")
+    public void testNumbers60_24() {
+        assertEquals(120, Main.getPiecesNumber(60, 24));
+    }
+
+    @Test()
+    @DisplayName("Pie test for 60 and 15")
+    public void testNumbers60_15() {
+        assertEquals(60, Main.getPiecesNumber(60, 15));
+    }
+
 }
