@@ -4,21 +4,47 @@ import com.company.Main;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigInteger;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainTest {
     @Test()
-    @DisplayName("Fact test for 0")
-    public void test0() {
-        assertEquals(BigInteger.valueOf(1), Main.getFact(0));
+    @DisplayName("Turtle test #1")
+    public void test1() {
+        List<String> list = new ArrayList<>();
+        list.add("North 10");
+        list.add("West 20");
+        list.add("South 30");
+        list.add("East 40");
+
+        assertEquals("20 -20", Main.getCoords(list));
     }
 
     @Test()
-    @DisplayName("Fact test for 7")
-    public void test7() {
-        assertEquals(BigInteger.valueOf(105), Main.getFact(7));
+    @DisplayName("Turtle test #2")
+    public void test2() {
+        List<String> list = new ArrayList<>();
+        list.add("North 30");
+        list.add("West 20");
+        list.add("South 30");
+        list.add("East 40");
+
+        assertEquals("20 0", Main.getCoords(list));
     }
+
+    @Test()
+    @DisplayName("Turtle test #3")
+    public void test3() {
+        List<String> list = new ArrayList<>();
+        list.add("North 10");
+        list.add("West 20");
+        list.add("South 30");
+        list.add("East 40");
+        list.add("North 20");
+
+        assertEquals("20 0", Main.getCoords(list));
+    }
+
 
 }
